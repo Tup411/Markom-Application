@@ -1,0 +1,69 @@
+﻿@model IEnumerable<_03.MarkomApplication.ModelView.UnitModelView>
+
+@{
+    ViewBag.Title = "List";
+    int no = 1;
+}
+<div class="row" style="width:100%; margin-left:0%; padding-bottom:10px">
+    <select id="search_unitcode" class="form-control col-xl-3" style="margin:auto">
+        <option value="" disabled selected hidden>-Select Unit Code-</option>
+        @foreach (var item in ViewBag.UnitCode)
+        {
+            <option value="@item.Value">@item.Value</option>
+        }
+    </select>
+    <select id="search_unitname" class="form-control col-xl-3" style="margin:auto">
+        <option value="" disabled selected hidden>-Select Unit Name-</option>
+        @foreach (var item in ViewBag.UnitName)
+        {
+            <option value="@item.Value">@item.Value</option>
+        }
+    </select>
+    <input class="form-control col-xl-2" id="search_date" placeholder="Created" onfocus="this.type='date'" style="margin:auto" />
+    <input class="form-control col-xl-2" id="search_created_by" placeholder="Created By" style="margin:auto" />
+    <button type="button" class="btn btn-block bg-gradient-warning" style="width:100px; float:right" id="search_unit">Search</button>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Unit Code</th>
+            <th>Unit Name</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @no
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tanggal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createdBy)
+                </td>
+                <td>
+                    <a href="#" id="detail_unit" data-code="@item.code" data-name="@item.name" data-id="@item.id"><span class="fas fa-search"></span></a>
+                    <a href="#" id="edit_unit" data-code="@item.code" data-name="@item.name" data-id="@item.id"><span class="fas fa-edit"></span></a>
+                    @if (item.deleteUnit == "")
+                    {
+                        <a href="#" id="delete_unit" data-id="@item.id"><span class="fas fa-trash"></span></a>
+                    }
+                </td>
+            </tr>
+            no++;
+        }
+    </tbody>
+</table>
+<div style="text-align: center; font-size: large; color: #007bff">@ViewBag.DataKosong</div>

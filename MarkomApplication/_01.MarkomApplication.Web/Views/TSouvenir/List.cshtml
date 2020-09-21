@@ -1,0 +1,59 @@
+﻿@model IEnumerable<_03.MarkomApplication.ModelView.TSouvenirModelView>
+
+@{
+    ViewBag.Title = "List";
+    int no = 1;
+}
+
+    <div class="row" style="width:100%; margin-left:0%; padding-bottom:10px">
+        <input class="form-control col-xl-2" id="search_tcode" placeholder="Transaction Code" style="margin:auto" />
+        <input class="form-control col-xl-2" id="search_received" placeholder="Received By" style="margin:auto" />
+        <input class="form-control col-xl-2" id="search_received_date" placeholder="Received Date" onfocus="this.type='date'" style="margin:auto" />
+        <input class="form-control col-xl-2" id="search_created_date" placeholder="Created" onfocus="this.type='date'" style="margin:auto" />
+        <input class="form-control col-xl-2" id="search_created" placeholder="Created By" style="margin:auto" />
+        <button type="button" class="btn btn-block bg-gradient-warning" style="width:100px; float:right" id="search_tsouvenir">Search</button>
+    </div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Transaction Code</th>
+            <th>Received By</th>
+            <th>Received Date</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @no
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.received)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tanggalReceived)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tanggalCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.created)
+                </td>
+                <td>
+                    <a href="#" id="detail_tsouvenir" data-code="@item.code" data-id="@item.id"><span class="fas fa-search"></span></a>
+                    <a href="#" id="edit_tsouvenir" data-code="@item.code" data-id="@item.id"><span class="fas fa-edit"></span></a>
+                </td>
+            </tr>
+            no++;
+        }
+    </tbody>
+</table>
+<div style="text-align: center; font-size: large; color: #007bff">@ViewBag.DataKosong</div>

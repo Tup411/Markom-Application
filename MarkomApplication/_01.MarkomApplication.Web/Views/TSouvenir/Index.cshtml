@@ -1,0 +1,283 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">List Souvenir Stock</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row" style="padding-bottom:10px">
+                            <div class="col-md-9">
+                                <div class="alert col-md-8" style="background-color:#cdeaff; color:#007bff; font-weight:bold; margin-bottom:0%; max-width:100%">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-block btn-primary" id="add_tsouvenir" style="width:100px; float:right">Add</button>
+                            </div>
+                        </div>
+                        <div id="table-list-tsouvenir"></div> <!-- Tempat List -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- modal popup bootstrap - CRUD Form -->
+<div class="modal fade" id="modal-form-tsouvenir">
+    <div class="modal-dialog" role="document" style="width:700px; max-width:100%">
+        <!-- modal content -->
+        <div class="modal-content" style=" border-color:#007bff">
+            <!-- modal header -->
+            <div class="modal-header" id="modal-header" style="background-color:#007bff; color:white; font-size:larger">
+            </div>
+            <!-- modal body dan footer -->
+            <div class="div-bind-form" id="div-bind-form" style="margin-top: 15px; margin-left: 15px; margin-right: 15px; margin-bottom: 15px">
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal popup delete -->
+<div class="modal fade" id="modal-form-tsouvenir-delete">
+    <div class="modal-dialog" role="document" style="width:230px; max-width:100%">
+        <div class="modal-content" style=" border-color:gainsboro">
+            <div class="modal-header" style="background-color:gainsboro">
+                <div class="modal-title" id="modal-header-delete" style="margin:auto; font-size:large">
+                    Judul Modal
+                </div>
+            </div>
+            <div class="div-bind-form" id="div-bind-form" style=" margin-left: 5px; margin-right: 5px; margin-bottom: 5px">
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        var vjs_loading = '<div class="progress progress-striped active" style="margin-bottom:0"> <div class="progress-bar" style="width:100%"> </div> </div>';
+
+        $(document).ready(function () {
+            ShowList();
+            $(".alert").hide();
+        });
+
+        //Variable seacrh
+        var vjs_search_tcode = '';
+        var vjs_search_received = '';
+        let vjs_search_received_date = '';
+        let vjs_search_created_date = '';
+        var vjs_search_created = '';
+
+        function ShowList() {
+            $.ajax({
+                url: '@Url.Action("List", "TSouvenir")',
+                type: 'get',
+                data: {
+                    searchCode: vjs_search_tcode,
+                    SearchReceived: vjs_search_received,
+                    searchReceivedDate: vjs_search_received_date,
+                    searchCreatedDate: vjs_search_created_date,
+                    searchCreated: vjs_search_created
+                },
+                success: function (result) {
+                    $("#table-list-tsouvenir").html(result);
+                }
+            });
+        };
+
+        //Search data Tsouvenir
+        $(document).on("click", "#search_tsouvenir", function () {
+            vjs_search_tcode = $("#search_tcode").val();
+            vjs_search_received = $("#search_received").val();
+            vjs_search_received_date = $("#search_received_date").val();
+            vjs_search_created_date = $("#search_created_date").val();
+            vjs_search_created = $("#search_created").val();
+            ShowList();
+        });
+
+
+        //Popup Tambah Souvenir stock
+        $(document).on("click", "#add_tsouvenir", function () {
+            $("#modal-form-tsouvenir").modal("show");
+            $("#modal-header").html("Add Souvenir Stock");
+            $.ajax({
+                url: '@Url.Action("Create", "TSouvenir")',
+                type: 'get',
+                success: function (result) {
+                    $(".div-bind-form").html(result);
+                    $(".validasiAlert").hide();
+                }
+            });
+        });
+
+        //Save Add data Souvenir stock
+        $(document).on("click", "#add_tsouvenir_save", function () {
+            var vjs_received = $("#receivedBy").val();
+            vjs_received == "" ? $(".validasi2").show() : $(".validasi2").hide();
+            var vjs_received_date = $("#receivedDate").val();
+            vjs_received_date == "" ? $(".validasi3").show() : $(".validasi3").hide();
+            var vjs_note = $("#note").val();
+
+            var item = {
+                receivedBy: vjs_received,
+                receivedDate: vjs_received_date,
+                note: vjs_note
+            };
+            $.ajax({
+                url: '@Url.Action("Create", "TSouvenir")',
+                type: 'post',
+                data: { paramModel: item },
+                success: function (result) {
+                    if (result.success) {
+                        $("#modal-form-tsouvenir").modal("hide");
+                        ShowList();
+                        $(".alert").show().html("Data Saved! New role has been add with code " + result.message + " !");
+                        window.setTimeout(function () {
+                            $(".alert").slideUp(500);
+                        }, 3000);
+                    }
+                    else {
+                        alert(result.message);
+                    }
+                }
+            });
+        });
+
+
+        //Popup edit Unit
+        $(document).on("click", "#edit_unit", function () {
+            var vjs_id = $(this).attr("data-id");
+            var vjs_name_popup = $(this).attr("data-name");
+            var vjs_code_popup = $(this).attr("data-code");
+            $("#modal-form-unit").modal("show");
+            $("#modal-header").html("Edit Unit - "+vjs_name_popup+" ("+vjs_code_popup+")");
+
+            $.ajax({
+                url: '@Url.Action("Edit", "Unit")',
+                type: 'get',
+                data: { paramId: vjs_id },
+                success: function (result) {
+                    $(".div-bind-form").html(result);
+                    $(".validasiAlert").hide();
+                }
+            });
+        });
+
+        //Save Edit data Unit
+        $(document).on("click", "#edit_unit_save", function () {
+            var vjs_id = $("#id").val();
+            var vjs_name = $("#name").val();
+            vjs_name == "" ? $(".validasi2").show() : $(".validasi2").hide();
+            var vjs_description = $("#description").val();
+
+            var item = {
+                id: vjs_id,
+                name: vjs_name,
+                description: vjs_description
+            };
+            $.ajax({
+                url: '@Url.Action("Edit", "Unit")',
+                type: 'post',
+                data: { paramModel: item },
+                success: function (result) {
+                    if (result.success) {
+                        $("#modal-form-unit").modal("hide");
+                        ShowList();
+                        $(".alert").show().html("Data Updated! Data unit has been updated !");
+                        window.setTimeout(function () {
+                            $(".alert").slideUp(500);
+                        }, 3000);
+                    }
+                    else {
+                        alert(result.message);
+                    }
+                }
+            });
+        });
+
+
+        //Popup detail/view Unit
+        $(document).on("click", "#detail_unit", function () {
+            var vjs_id = $(this).attr("data-id");
+            var vjs_name_popup = $(this).attr("data-name");
+            var vjs_code_popup = $(this).attr("data-code");
+            $("#modal-form-unit").modal("show");
+            $("#modal-header").html("View Unit - "+vjs_name_popup+" ("+vjs_code_popup+")");
+
+            $.ajax({
+                url: '@Url.Action("Detail", "Unit")',
+                type: 'get',
+                data: { paramId: vjs_id },
+                success: function (result) {
+                    $(".div-bind-form").html(result);
+                    $(".validasiAlert").hide();
+                }
+            });
+        });
+
+        //Popup delete Unit
+        $(document).on("click", "#delete_unit", function () {
+            var vjs_id = $(this).attr("data-id");
+            $("#modal-form-unit-delete").modal("show");
+            $("#modal-header-delete").html("Delete Data ?");
+
+            $.ajax({
+                url: '@Url.Action("Delete", "Unit")',
+                type: 'get',
+                data: { paramId: vjs_id },
+                success: function (result) {
+                    $(".div-bind-form").html(result);
+                }
+            });
+        });
+
+        //Save delete data Unit
+        $(document).on("click", "#delete_unit_save", function () {
+            var vjs_id = $("#id").val();
+            var vjs_code = $("#code").val();
+            var item = {
+                id: vjs_id,
+                code: vjs_code
+            };
+            $.ajax({
+                url: '@Url.Action("Delete", "Unit")',
+                type: 'post',
+                data: { paramModel: item },
+                success: function (result) {
+                    if (result.success) {
+                        $("#modal-form-unit-delete").modal("hide");
+                        ShowList();
+                        $(".alert").show().html("Data Deleted! Data unit with code "+vjs_code+" has been deleted !");
+                        window.setTimeout(function () {
+                            $(".alert").slideUp(500);
+                        }, 3000);
+                    }
+                    else {
+                        alert(result.message);
+                    }
+                }
+            });
+        });
+
+
+
+
+
+    </script>
+}
+

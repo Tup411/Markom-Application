@@ -1,0 +1,34 @@
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_02.MarkomApplication.ModelAccess.dll.config
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_02.MarkomApplication.ModelAccess.dll
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_02.MarkomApplication.ModelAccess.pdb
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\EntityFramework.dll
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_03.MarkomApplication.ModelView.dll
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_04.MarkomApplication.ModelData.dll
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_03.MarkomApplication.ModelView.pdb
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_03.MarkomApplication.ModelView.dll.config
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_04.MarkomApplication.ModelData.pdb
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_04.MarkomApplication.ModelData.dll.config
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\EntityFramework.xml
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\obj\Debug\_02.MarkomApplication.ModelAccess.csprojAssemblyReference.cache
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\obj\Debug\_02.MarkomApplication.ModelAccess.csproj.CopyComplete
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\obj\Debug\_02.MarkomApplication.ModelAccess.dll
+C:\Users\User\Desktop\XSIS ACADEMY\MarkomApplication\_02.MarkomApplication.ModelAccess\obj\Debug\_02.MarkomApplication.ModelAccess.pdb
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_02.MarkomApplication.ModelAccess.dll.config
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_02.MarkomApplication.ModelAccess.dll
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_02.MarkomApplication.ModelAccess.pdb
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\EntityFramework.dll
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_03.MarkomApplication.ModelView.dll
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_04.MarkomApplication.ModelData.dll
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_03.MarkomApplication.ModelView.pdb
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_03.MarkomApplication.ModelView.dll.config
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_04.MarkomApplication.ModelData.pdb
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\_04.MarkomApplication.ModelData.dll.config
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\EntityFramework.xml
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\obj\Debug\_02.MarkomApplication.ModelAccess.csprojAssemblyReference.cache
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\obj\Debug\_02.MarkomApplication.ModelAccess.csproj.CopyComplete
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\obj\Debug\_02.MarkomApplication.ModelAccess.dll
+C:\Users\User\Desktop\XSIS ACADEMY\3.1.My Application\MarkomApplication\_02.MarkomApplication.ModelAccess\obj\Debug\_02.MarkomApplication.ModelAccess.pdb

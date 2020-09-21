@@ -1,0 +1,60 @@
+﻿@model IEnumerable<_03.MarkomApplication.ModelView.ProductModelView>
+
+@{
+    ViewBag.Title = "List";
+    int no = 1;
+}
+
+<div class="row" style="width:100%; margin-left:0%; padding-bottom:10px">
+    <input class="form-control col-xl-2" id="search_productcode" placeholder="Product Code" style="margin:auto" />
+    <input class="form-control col-xl-2" id="search_productname" placeholder="Product Name" style="margin:auto" />
+    <input class="form-control col-xl-2" id="search_description" placeholder="Description" style="margin:auto" />
+    <input class="form-control col-xl-2" id="search_date" placeholder="Created" onfocus="this.type='date'" style="margin:auto" />
+    <input class="form-control col-xl-2" id="search_created_by" placeholder="Created By" style="margin:auto" />
+    <button type="button" class="btn btn-block bg-gradient-warning" style="width:100px; float:right" id="search_product">Search</button>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Product Code</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @no
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tanggal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createdBy)
+                </td>
+                <td>
+                    <a href="#" id="detail_product" data-code="@item.code" data-name="@item.name" data-id="@item.id"><span class="fas fa-search"></span></a>
+                    <a href="#" id="edit_product" data-code="@item.code" data-name="@item.name" data-id="@item.id"><span class="fas fa-edit"></span></a>
+                    <a href="#" id="delete_product" data-id="@item.id"><span class="fas fa-trash"></span></a>
+                </td>
+            </tr>
+            no++;
+        }
+    </tbody>
+</table>
+<div style="text-align: center; font-size: large; color: #007bff">@ViewBag.DataKosong</div>

@@ -1,0 +1,41 @@
+﻿@model _03.MarkomApplication.ModelView.UnitModelView
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<form style="color:#343a40">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <label>*Unit Code</label>
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.code, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", placeholder = "Auto Generated" } })
+                <span class="validasiAlert validasi1" style="color:red;font-size:smaller">*Harus diisi !!</span>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <label>*Unit Name</label>
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", placeholder = "Type Unit Name" } })
+                <span class="validasiAlert validasi2" style="color:red;font-size:smaller">*Harus diisi !!</span>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <label>Description</label>
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", placeholder = "Type Description" } })
+            </div>
+        </div>
+        <div class="row" style="padding-top:35px">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-block bg-gradient-warning" style="width:80px; float:right" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Db_MarkomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="m_employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employee_number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" />
+          <Property Name="m_company_id" Type="bigint" />
+          <Property Name="email" Type="varchar" MaxLength="150" />
+          <Property Name="is_delete" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+          <Property Name="updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="m_product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="is_delete" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+          <Property Name="updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="m_souvenir">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="225" />
+          <Property Name="m_unit_id" Type="bigint" Nullable="false" />
+          <Property Name="is_delete" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+          <Property Name="updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="m_unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="225" />
+          <Property Name="is_delete" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+          <Property Name="updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="t_souvenir">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="t_event_id" Type="bigint" />
+          <Property Name="request_by" Type="bigint" Nullable="false" />
+          <Property Name="request_date" Type="datetime" />
+          <Property Name="request_due_date" Type="datetime" />
+          <Property Name="approved_by" Type="bigint" />
+          <Property Name="approved_date" Type="datetime" />
+          <Property Name="received_by" Type="bigint" />
+          <Property Name="received_date" Type="datetime" />
+          <Property Name="settlement_by" Type="bigint" />
+          <Property Name="settlement_date" Type="datetime" />
+          <Property Name="settlement_approved_by" Type="bigint" />
+          <Property Name="settlement_approved_date" Type="datetime" />
+          <Property Name="status" Type="int" />
+          <Property Name="note" Type="varchar" MaxLength="255" />
+          <Property Name="reject_reason" Type="varchar" MaxLength="255" />
+          <Property Name="is_delete" Type="bit" />
+          <Property Name="created_by" Type="bigint" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="updated_by" Type="bigint" />
+          <Property Name="updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="t_souvenir_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_souvenir_id" Type="bigint" Nullable="false" />
+          <Property Name="m_souvenir_id" Type="bigint" Nullable="false" />
+          <Property Name="qty" Type="bigint" />
+          <Property Name="qty_settlement" Type="bigint" />
+          <Property Name="note" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="is_delete" Type="bit" Nullable="false" />
+          <Property Name="created_by" Type="bigint" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="updated_by" Type="bigint" />
+          <Property Name="updated_date" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="Db_MarkomModelStoreContainer">
+          <EntitySet Name="m_employee" EntityType="Self.m_employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_product" EntityType="Self.m_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_souvenir" EntityType="Self.m_souvenir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_unit" EntityType="Self.m_unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_souvenir" EntityType="Self.t_souvenir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_souvenir_item" EntityType="Self.t_souvenir_item" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Db_MarkomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="m_souvenir">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="m_unit_id" Type="Int64" Nullable="false" />
+          <Property Name="is_delete" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="m_unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="is_delete" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="Db_MarkomEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="m_souvenir" EntityType="Self.m_souvenir" />
+          <EntitySet Name="m_unit" EntityType="Self.m_unit" />
+          <EntitySet Name="m_product" EntityType="Db_MarkomModel.m_product" />
+          <EntitySet Name="m_employee" EntityType="Db_MarkomModel.m_employee" />
+          <EntitySet Name="t_souvenir_item" EntityType="Db_MarkomModel.t_souvenir_item" />
+          <EntitySet Name="t_souvenir" EntityType="Db_MarkomModel.t_souvenir" />
+        </EntityContainer>
+        <EntityType Name="m_product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_delete" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="m_employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee_number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="m_company_id" Type="Int64" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="is_delete" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="t_souvenir_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_souvenir_id" Type="Int64" Nullable="false" />
+          <Property Name="m_souvenir_id" Type="Int64" Nullable="false" />
+          <Property Name="qty" Type="Int64" />
+          <Property Name="qty_settlement" Type="Int64" />
+          <Property Name="note" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_delete" Type="Boolean" Nullable="false" />
+          <Property Name="created_by" Type="Int64" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="Int64" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="t_souvenir">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="t_event_id" Type="Int64" />
+          <Property Name="request_by" Type="Int64" Nullable="false" />
+          <Property Name="request_date" Type="DateTime" Precision="3" />
+          <Property Name="request_due_date" Type="DateTime" Precision="3" />
+          <Property Name="approved_by" Type="Int64" />
+          <Property Name="approved_date" Type="DateTime" Precision="3" />
+          <Property Name="received_by" Type="Int64" />
+          <Property Name="received_date" Type="DateTime" Precision="3" />
+          <Property Name="settlement_by" Type="Int64" />
+          <Property Name="settlement_date" Type="DateTime" Precision="3" />
+          <Property Name="settlement_approved_by" Type="Int64" />
+          <Property Name="settlement_approved_date" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="reject_reason" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_delete" Type="Boolean" />
+          <Property Name="created_by" Type="Int64" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="Int64" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Db_MarkomModelStoreContainer" CdmEntityContainer="Db_MarkomEntities">
+          <EntitySetMapping Name="m_souvenir">
+            <EntityTypeMapping TypeName="Db_MarkomModel.m_souvenir">
+              <MappingFragment StoreEntitySet="m_souvenir">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="m_unit_id" ColumnName="m_unit_id" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_unit">
+            <EntityTypeMapping TypeName="Db_MarkomModel.m_unit">
+              <MappingFragment StoreEntitySet="m_unit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_product">
+            <EntityTypeMapping TypeName="Db_MarkomModel.m_product">
+              <MappingFragment StoreEntitySet="m_product">
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_employee">
+            <EntityTypeMapping TypeName="Db_MarkomModel.m_employee">
+              <MappingFragment StoreEntitySet="m_employee">
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="m_company_id" ColumnName="m_company_id" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="employee_number" ColumnName="employee_number" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_souvenir_item">
+            <EntityTypeMapping TypeName="Db_MarkomModel.t_souvenir_item">
+              <MappingFragment StoreEntitySet="t_souvenir_item">
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="qty_settlement" ColumnName="qty_settlement" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="m_souvenir_id" ColumnName="m_souvenir_id" />
+                <ScalarProperty Name="t_souvenir_id" ColumnName="t_souvenir_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_souvenir">
+            <EntityTypeMapping TypeName="Db_MarkomModel.t_souvenir">
+              <MappingFragment StoreEntitySet="t_souvenir">
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+                <ScalarProperty Name="reject_reason" ColumnName="reject_reason" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="settlement_approved_date" ColumnName="settlement_approved_date" />
+                <ScalarProperty Name="settlement_approved_by" ColumnName="settlement_approved_by" />
+                <ScalarProperty Name="settlement_date" ColumnName="settlement_date" />
+                <ScalarProperty Name="settlement_by" ColumnName="settlement_by" />
+                <ScalarProperty Name="received_date" ColumnName="received_date" />
+                <ScalarProperty Name="received_by" ColumnName="received_by" />
+                <ScalarProperty Name="approved_date" ColumnName="approved_date" />
+                <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+                <ScalarProperty Name="request_due_date" ColumnName="request_due_date" />
+                <ScalarProperty Name="request_date" ColumnName="request_date" />
+                <ScalarProperty Name="request_by" ColumnName="request_by" />
+                <ScalarProperty Name="t_event_id" ColumnName="t_event_id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

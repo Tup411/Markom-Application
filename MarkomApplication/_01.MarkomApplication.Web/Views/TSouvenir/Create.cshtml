@@ -1,0 +1,116 @@
+﻿@model _03.MarkomApplication.ModelView.TSouvenirModelView
+
+@{
+    ViewBag.Title = "Create";
+    int itemRow = 1;
+}
+
+<form style="color:#343a40; border:1px solid #d5d5d5">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <label style="float:right">*Transaction Code</label>
+            </div>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.code, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", placeholder = "Auto Generated" } })
+                <span class="validasiAlert validasi1" style="color:red;font-size:smaller">*Harus diisi !!</span>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <label style="float:right">*Received By</label>
+            </div>
+            <div class="col-md-5">
+                @Html.DropDownListFor(model => model.receivedBy, (IEnumerable<SelectListItem>)ViewBag.receivedName, "-Select Employee-", new { @class = "form-control" })
+                <span class="validasiAlert validasi2" style="color:red;font-size:smaller">*Harus diisi !!</span>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <label style="float:right">*Received Date</label>
+            </div>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.receivedDate, new { htmlAttributes = new { @class = "form-control", onfocus = "this.type='date'", placeholder = "Select Date" } })
+                <span class="validasiAlert validasi3" style="color:red;font-size:smaller">*Harus diisi !!</span>
+            </div>
+        </div>
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <label style="float:right">Note</label>
+            </div>
+            <div class="col-md-5">
+                @Html.TextAreaFor(model => model.note, htmlAttributes: new { @class = "form-control textareaz", @placeholder = "Type Note" })
+            </div>
+        </div>
+    </div>
+</form>
+
+<form style="color:#343a40; padding-top:15px">
+    <div class="modal-body" style="border:1px solid #d5d5d5">
+        <div class="row" style="width:100px">
+            <button type="button" class="btn btn-block btn-primary" id="add_item">Add Item</button>
+        </div>
+        <div class="row" style="padding-top:15px">
+            <label class="col-md-4">Souvenir Name</label>
+            <label class="col-md-2">Qty</label>
+            <label class="col-md-4">Note</label>
+        </div>
+        @{
+            var i = 0;
+            while (i < itemRow)
+            {
+                i += 1;
+                <div class="row" style="padding-top:10px">
+                    <div class="col-md-4" id='"S_Name_"+@i' style="padding-right:5px">
+                        <input class="form-control" style="width:100%" />
+                    </div>
+                    <div class="col-md-2" style="padding-right:5px">
+                        <input class="form-control" />
+                    </div>
+                    <div class="col-md-4" style="padding-right:20px">
+                        <input class="form-control" />
+                    </div>
+                    <div style="padding-right:5px">
+                        <a href="#" id="edit_souvenir"><span class="fas fa-edit"></span></a>
+                    </div>
+                    <div>
+                        <a href="#" id="delete_souvenir"><span class="fas fa-trash"></span></a>
+                    </div>
+                </div>
+
+            }
+        }
+
+
+
+    </div>
+</form>
+
+<div class="row" style="padding-top:25px">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-block bg-gradient-warning" style="width:80px; float:right" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-block btn-primary" id="add_tsouvenir_save" style="width:80px; float:right; margin-top:0%; margin-right:5px">Save</button>
+    </div>
+</div>
+
+
+<script>
+
+    $(document).on("click", "#add_item", function () {
+        $.ajax({
+            url: '@Url.Action("List", "TSouvenir")',
+            type: 'get',
+            data: {
+                searchCode: vjs_search_tcode,
+                SearchReceived: vjs_search_received,
+                searchReceivedDate: vjs_search_received_date,
+                searchCreatedDate: vjs_search_created_date,
+                searchCreated: vjs_search_created
+            },
+            success: function (result) {
+                $("#table-list-tsouvenir").html(result);
+            }
+        });
+    });
+
+</script>
